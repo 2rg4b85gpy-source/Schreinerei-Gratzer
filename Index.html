@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Schreinerei Gratzer GmbH | Maßgefertigte Schreinerarbeiten in München</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Schreinerei Gratzer GmbH in München-Trudering: Maßgefertigte Möbel, Treppen, Türen & Fenster sowie barrierefreies Wohnen mit Meisterqualität.">
+  <style>
+    /* Reset & Basis */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      color: #222;
+      background-color: #f5f5f5;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Layout & Container */
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    section {
+      padding: 4rem 0;
+    }
+
+    /* Farben & Stile */
+    :root {
+      --primary: #986c3a;    /* warmes Holzbraun */
+      --primary-dark: #7b5327;
+      --accent: #c9a57a;
+      --bg-light: #faf7f3;
+      --bg-dark: #1f1f1f;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 1.6rem;
+      border-radius: 999px;
+      background-color: var(--primary);
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.1s ease;
+    }
+
+    .btn:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--primary);
+      border: 1px solid var(--primary);
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.4rem;
+      width: 70px;
+      height: 3px;
+      background-color: var(--primary);
+      border-radius: 999px;
+    }
+
+    /* Header & Navigation */
+    header {
+      background-color: #fff;
+      border-bottom: 1px solid #e5e5e5;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.7rem 1.5rem;
+    }
+
+    .logo {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .logo span {
+      color: var(--primary);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    nav a {
+      color: #333;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    .nav-cta {
+      margin-left: 1rem;
+    }
+
+    /* Mobile Navigation */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      cursor: pointer;
+    }
+
+    .nav-toggle span {
+      width: 22px;
+      height: 2px;
+      background-color: #333;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: #fff;
+        flex-direction: column;
+        padding: 1rem 1.5rem;
+        border-bottom-left-radius: 0.75rem;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+        display: none;
+      }
+
+      nav ul.open {
+        display: flex;
+      }
+
+      .nav-cta {
+        display: none;
+      }
+
+      .nav-toggle {
+        display: flex;
+      }
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, #2b2b2b, #171717);
+      color: #fff;
+      padding: 4.5rem 0 4rem;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero-eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.75rem;
+      color: #aaa;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.1rem, 4vw, 2.8rem);
+      line-height: 1.1;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero p {
+      max-width: 30rem;
+      color: #ddd;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-meta {
+      font-size: 0.9rem;
+      color: #b5b5b5;
+    }
+
+    .hero-meta strong {
+      color: #fff;
+    }
+
+    .hero-image {
+      border-radius: 1.2rem;
+      overflow: hidden;
+      background-color: #000;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+      position: relative;
+      min-height: 260px;
+    }
+
+    .hero-image::before {
+      content: "Meisterbetrieb seit 1997";
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @media (max-width: 900px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Über uns */
+    .about {
+      background-color: #fff;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    .about-highlight {
+      background-color: var(--bg-light);
+      border-left: 4px solid var(--primary);
+      padding: 1.2rem 1.4rem;
+      border-radius: 0.6rem;
+      font-size: 0.95rem;
+      margin-top: 1rem;
+    }
+
+    .about-meta {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 1.2rem;
+      margin-top: 1.8rem;
+      font-size: 0.9rem;
+    }
+
+    .about-meta-item span {
+      display: block;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #777;
+      margin-bottom: 0.2rem;
+    }
+
+    .about-meta-item strong {
+      font-size: 1.05rem;
+    }
+
+    /* Leistungen */
+    .services {
+      background-color: var(--bg-light);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.8rem;
+    }
+
+    .service-card {
+      background-color: #fff;
+      border-radius: 0.9rem;
+      padding: 1.5rem 1.4rem 1.6rem;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+    }
+
+    .service-card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 0.4rem;
+      color: var(--primary-dark);
+    }
+
+    .service-card p {
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    .service-tag {
+      display: inline-block;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #999;
+      margin-bottom: 0.6rem;
+    }
+
+    /* Warum wir */
+    .why {
+      background-color: #fff;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 2.2rem;
+      align-items: center;
+    }
+
+    .why-list {
+      list-style: none;
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    .why-list li {
+      display: flex;
+      gap: 0.7rem;
+      align-items: flex-start;
+      font-size: 0.98rem;
+    }
+
+    .why-badge {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background-color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .award-box {
+      background-color: var(--bg-light);
+      border-radius: 0.9rem;
+      padding: 1.2rem 1.4rem;
+      font-size: 0.9rem;
+    }
+
+    .award-box strong {
+      color: var(--primary-dark);
+    }
+
+    /* Referenzen */
+    .gallery {
+      background-color: var(--bg-light);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.4rem;
+    }
+
+    .gallery-item {
+      background-color: #fff;
+      border-radius: 0.9rem;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .gallery-item-content {
+      padding: 1rem 1.2rem 1.2rem;
+      font-size: 0.92rem;
+    }
+
+    .gallery-item h3 {
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .gallery-item span {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #888;
+      display: inline-block;
+      margin-bottom: 0.4rem;
+    }
+
+    /* Ablauf */
+    .process {
+      background-color: #fff;
+    }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 1.4rem;
+      counter-reset: step;
+    }
+
+    .process-step {
+      background-color: var(--bg-light);
+      border-radius: 0.9rem;
+      padding: 1.4rem 1.3rem 1.5rem;
+      font-size: 0.94rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .process-step::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      top: 0.9rem;
+      right: 1rem;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: rgba(0, 0, 0, 0.06);
+    }
+
+    .process-step h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.4rem;
+      color: var(--primary-dark);
+    }
+
+    /* FAQ */
+    .faq {
+      background-color: var(--bg-light);
+    }
+
+    .faq-list {
+      max-width: 800px;
+      margin: 0 auto;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .faq-item {
+      background-color: #fff;
+      border-radius: 0.8rem;
+      padding: 1.2rem 1.3rem 1.3rem;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
+    }
+
+    .faq-item h3 {
+      font-size: 1rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .faq-item p {
+      font-size: 0.94rem;
+      color: #555;
+    }
+
+    /* Kontakt */
+    .contact {
+      background-color: #111;
+      color: #f3f3f3;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 2.5rem;
+    }
+
+    .contact h2.section-title {
+      color: #fff;
+    }
+
+    .contact h2.section-title::after {
+      background-color: var(--accent);
+    }
+
+    .contact-details {
+      font-size: 0.96rem;
+      display: grid;
+      gap: 0.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-details p span {
+      display: inline-block;
+      min-width: 80px;
+      color: #aaa;
+    }
+
+    .contact-note {
+      font-size: 0.9rem;
+      color: #c9c9c9;
+      margin-top: 1rem;
+    }
+
+    form {
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    label {
+      font-size: 0.88rem;
+      margin-bottom: 0.15rem;
+      display: block;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 0.7rem 0.75rem;
+      border-radius: 0.5rem;
+      border: 1px solid #444;
+      background-color: #181818;
+      color: #f3f3f3;
+      font-size: 0.9rem;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: #777;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .contact-subline {
+      font-size: 0.86rem;
+      color: #b8b8b8;
+      margin-top: 0.7rem;
+    }
+
+    @media (max-width: 900px) {
+      .about-grid,
+      .why-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Footer */
+    footer {
+      background-color: #080808;
+      color: #aaa;
+      font-size: 0.8rem;
+      padding: 1.4rem 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-inner a {
+      color: #ccc;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* Utility */
+    .mt-1 { margin-top: 0.5rem; }
+    .mt-2 { margin-top: 1rem; }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-inner">
+      <div class="logo">
+        Schreinerei <span>Gratzer</span>
+      </div>
+      <nav>
+        <div class="nav-toggle" id="navToggle" aria-label="Menü öffnen">
+          <span></span><span></span><span></span>
+        </div>
+        <ul id="navList">
+          <li><a href="#leistungen">Leistungen</a></li>
+          <li><a href="#ueber-uns">Über uns</a></li>
+          <li><a href="#referenzen">Referenzen</a></li>
+          <li><a href="#ablauf">Ablauf</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+      </nav>
+      <a href="#kontakt" class="btn nav-cta">Beratungstermin</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div>
+        <div class="hero-eyebrow">Schreinerei in München-Trudering</div>
+        <h1>Maßgefertigte Schreinerarbeiten – persönlich &amp; präzise.</h1>
+        <p>Seit 1997 fertigen wir individuelle Möbel, Treppen, Türen &amp; Fenster – mit Leidenschaft, Meisterqualität und zuverlässiger Ausführung.</p>
+        <div class="hero-actions">
+          <a href="#kontakt" class="btn">Jetzt Beratungstermin vereinbaren</a>
+          <a href="#leistungen" class="btn btn-secondary">Leistungen ansehen</a>
+        </div>
+        <div class="hero-meta">
+          <strong>Schreinerei Gratzer GmbH</strong> · Meisterbetrieb seit 1997 · München-Trudering
+        </div>
+      </div>
+      <div class="hero-image">
+        <!-- Hero-Bild: hier eigenes Werkstatt-/Projektfoto einfügen -->
+        <img src="bilder/hero-werkstatt.jpg" alt="Schreinerei Gratzer – Werkstatt und Holzarbeiten">
+      </div>
+    </div>
+  </section>
+
+  <!-- Über uns -->
+  <section class="about" id="ueber-uns">
+    <div class="container">
+      <h2 class="section-title">Über uns</h2>
+      <div class="about-grid">
+        <div>
+          <p>Herzlich willkommen bei der Schreinerei Gratzer GmbH in München-Trudering. Gegründet 1997 von Schreinermeister Johannes Gratzer, sind wir Ihr zuverlässiger Partner für hochwertige Maßanfertigungen rund um Holz.</p>
+          <p class="mt-1">Unser Team begleitet Sie von der ersten Idee bis zur fertigen Montage. Wir hören genau zu, beraten ehrlich und setzen Ihre Wünsche fachgerecht um – ob einzelne Möbelstücke, komplette Innenausbauten oder barrierefreie Lösungen.</p>
+
+          <div class="about-highlight">
+            Als anerkannter Ausbildungsbetrieb und ausgezeichnet mit dem Erasmus-Grasser-Preis 2022 engagieren wir uns besonders für den Nachwuchs – Qualität, Verantwortung und Handwerkstradition gehören bei uns zusammen.
+          </div>
+
+          <div class="about-meta">
+            <div class="about-meta-item">
+              <span>Standort</span>
+              <strong>München-Trudering</strong>
+            </div>
+            <div class="about-meta-item">
+              <span>Seit</span>
+              <strong>1997</strong>
+            </div>
+            <div class="about-meta-item">
+              <span>Schwerpunkt</span>
+              <strong>Maßanfertigung</strong>
+            </div>
+            <div class="about-meta-item">
+              <span>Service</span>
+              <strong>Beratung vor Ort</strong>
+            </div>
+          </div>
+        </div>
+        <div>
+          <!-- Team- oder Werkstattfoto -->
+          <img src="bilder/team-werkstatt.jpg" alt="Team der Schreinerei Gratzer in der Werkstatt">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Leistungen -->
+  <section class="services" id="leistungen">
+    <div class="container">
+      <h2 class="section-title">Unsere Leistungen</h2>
+      <p class="mt-1" style="max-width: 40rem;">Wir planen, fertigen und montieren individuelle Lösungen nach Maß – passgenau für Ihre Räume und Bedürfnisse. Eine Auswahl unserer Hauptleistungen:</p>
+
+      <div class="services-grid mt-2">
+        <article class="service-card">
+          <div class="service-tag">Möbelbau</div>
+          <h3>Möbel nach Maß</h3>
+          <p>Einbauschränke für Dachschrägen, Regale, Garderoben oder komplette Wohnmöbel – wir nutzen jeden Zentimeter optimal und gestalten nach Ihrem Stil.</p>
+        </article>
+
+        <article class="service-card">
+          <div class="service-tag">Küche &amp; Bad</div>
+          <h3>Küchen &amp; Badmöbel</h3>
+          <p>Individuelle Küchen und Badmöbel, die genau zu Ihren Räumen passen – funktional, langlebig und optisch aufeinander abgestimmt.</p>
+        </article>
+
+        <article class="service-card">
+          <div class="service-tag">Treppen</div>
+          <h3>Treppenbau</h3>
+          <p>Von der klassischen Holztreppe bis zur modernen Raumlösung – wir verbinden Funktion, Sicherheit und Design zu einer harmonischen Einheit.</p>
+        </article>
+
+        <article class="service-card">
+          <div class="service-tag">Türen &amp; Fenster</div>
+          <h3>Türen &amp; Fenster</h3>
+          <p>Qualitativ hochwertige Türen und Fenster, fachgerecht montiert – für ein angenehmes Wohnklima und einen stimmigen Gesamteindruck.</p>
+        </article>
+
+        <article class="service-card">
+          <div class="service-tag">Barrierefreiheit</div>
+          <h3>Barrierefreies Wohnen</h3>
+          <p>Mehr Komfort für alle Generationen: angepasste Durchgänge, Handläufe, spezielle Treppenlösungen und weitere individuelle Anpassungen.</p>
+        </article>
+
+        <article class="service-card">
+          <div class="service-tag">Außenbereich</div>
+          <h3>Außenarbeiten</h3>
+          <p>Gartenmöbel, Terrassenelemente oder andere Außenarbeiten aus Holz – robust, wetterbeständig und optisch passend zu Haus und Garten.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Warum wir -->
+  <section class="why">
+    <div class="container">
+      <h2 class="section-title">Warum Schreinerei Gratzer?</h2>
+      <div class="why-grid mt-1">
+        <div>
+          <ul class="why-list">
+            <li>
+              <div class="why-badge">✓</div>
+              <div><strong>Individuell statt Standard</strong><br>Jedes Projekt wird exakt auf Ihre Räume und Ihre Vorstellungen abgestimmt.</div>
+            </li>
+            <li>
+              <div class="why-badge">✓</div>
+              <div><strong>Meisterqualität seit 1997</strong><br>Langjährige Erfahrung, durchdachte Planung und saubere Umsetzung.</div>
+            </li>
+            <li>
+              <div class="why-badge">✓</div>
+              <div><strong>Direkter Kontakt</strong><br>Kurze Entscheidungswege, persönliche Betreuung und klare Absprachen.</div>
+            </li>
+            <li>
+              <div class="why-badge">✓</div>
+              <div><strong>Verlässlichkeit & Sauberkeit</strong><br>Termine werden eingehalten – und wir hinterlassen Ihre Räume ordentlich.</div>
+            </li>
+          </ul>
+        </div>
+        <div class="award-box">
+          <strong>Ausgezeichneter Ausbildungsbetrieb</strong><br>
+          Für unser Engagement in der Ausbildung wurden wir mit dem Erasmus-Grasser-Preis ausgezeichnet. Wir investieren in den Nachwuchs und sichern so Qualität und Know-how – heute und in Zukunft.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Referenzen -->
+  <section class="gallery" id="referenzen">
+    <div class="container">
+      <h2 class="section-title">Referenzen & Projekte</h2>
+      <p class="mt-1" style="max-width: 40rem;">Ein kleiner Einblick in abgeschlossene Arbeiten. Auf Wunsch zeigen wir Ihnen weitere Beispiele im persönlichen Gespräch.</p>
+
+      <div class="gallery-grid mt-2">
+        <article class="gallery-item">
+          <img src="bilder/referenz-kueche.jpg" alt="Maßgefertigte Einbauküche in Dachschräge">
+          <div class="gallery-item-content">
+            <span>Küche nach Maß</span>
+            <h3>Einbauküche in Dachschräge</h3>
+            <p>Passgenaue Lösung für einen schwierigen Grundriss – optimal genutzter Stauraum und stimmiges Gesamtbild.</p>
+          </div>
+        </article>
+
+        <article class="gallery-item">
+          <img src="bilder/referenz-treppe.jpg" alt="Holztreppe mit Geländer">
+          <div class="gallery-item-content">
+            <span>Treppenbau</span>
+            <h3>Holztreppe mit Charakter</h3>
+            <p>Eine Treppe, die sich harmonisch in das Wohnumfeld einfügt und dabei komfortabel und sicher ist.</p>
+          </div>
+        </article>
+
+        <article class="gallery-item">
+          <img src="bilder/referenz-aussen.jpg" alt="Außenmöbel und Holzarbeiten für Terrasse und Garten">
+          <div class="gallery-item-content">
+            <span>Außenbereich</span>
+            <h3>Holz im Garten</h3>
+            <p>Witterungsbeständige Holzlösungen für Terrasse und Garten, die optisch und funktional überzeugen.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ablauf -->
+  <section class="process" id="ablauf">
+    <div class="container">
+      <h2 class="section-title">So läuft die Zusammenarbeit</h2>
+      <p class="mt-1" style="max-width: 40rem;">Transparenz und klare Schritte sind uns wichtig. So wissen Sie jederzeit, wo Ihr Projekt steht.</p>
+
+      <div class="process-steps mt-2">
+        <div class="process-step">
+          <h3>Erstgespräch</h3>
+          <p>Sie schildern Ihre Vorstellungen und Anforderungen – telefonisch, per E-Mail oder direkt bei uns.</p>
+        </div>
+        <div class="process-step">
+          <h3>Aufmaß & Planung</h3>
+          <p>Wir nehmen vor Ort Maß, beraten zu Materialien und erarbeiten einen passenden Vorschlag.</p>
+        </div>
+        <div class="process-step">
+          <h3>Fertigung in der Werkstatt</h3>
+          <p>In unserer Werkstatt entstehen Ihre Möbel oder Bauteile – präzise und mit viel Handarbeit.</p>
+        </div>
+        <div class="process-step">
+          <h3>Montage & Übergabe</h3>
+          <p>Wir montieren alles vor Ort, prüfen die Funktion und übergeben Ihnen das fertige Ergebnis – sauber und einsatzbereit.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="container">
+      <h2 class="section-title">Häufige Fragen</h2>
+      <div class="faq-list mt-1">
+        <div class="faq-item">
+          <h3>Wie lange dauert eine Maßanfertigung?</h3>
+          <p>Je nach Umfang liegt die Fertigungszeit meist zwischen 6 und 8 Wochen nach Auftragsbestätigung. Konkrete Termine sprechen wir im Angebot mit Ihnen ab.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Mit welchen Holzarten arbeiten Sie?</h3>
+          <p>Wir verwenden u. a. Eiche, Buche, Ahorn und weitere hochwertige Materialien. Die passende Holzart wählen wir gemeinsam im Beratungsgespräch aus.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Übernehmen Sie auch kleinere Reparaturen?</h3>
+          <p>Ja, auch das Einstellen von Türen oder Reparaturen an bestehenden Möbeln gehören zu unserem Angebot.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Arbeiten Sie auch bei besonderen Raumverhältnissen?</h3>
+          <p>Dachschrägen, Nischen und ungewöhnliche Grundrisse sind unser Alltag – gerade hier spielen Maßanfertigungen ihre Stärken aus.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kontakt -->
+  <section class="contact" id="kontakt">
+    <div class="container contact-grid">
+      <div>
+        <h2 class="section-title">Kontakt & Beratung</h2>
+        <p class="mt-1">Sie planen ein Projekt oder haben Fragen zu unseren Leistungen? Rufen Sie uns an oder senden Sie uns eine Nachricht über das Formular.</p>
+
+        <div class="contact-details mt-2">
+          <p><span>Firma:</span> Schreinerei Gratzer GmbH</p>
+          <p><span>Adresse:</span> Stolzhofstraße 16, 81825 München</p>
+          <p><span>Telefon:</span> <a href="tel:+498943909227">+49 (0)89 43909227</a></p>
+          <p><span>E-Mail:</span> <a href="mailto:info@schreinerei-gratzer.de">info@schreinerei-gratzer.de</a></p>
+          <p><span>Zeiten:</span> Mo–Do 07:00–17:00 Uhr · Fr 07:00–12:00 Uhr</p>
+        </div>
+
+        <p class="contact-note">Gern vereinbaren wir einen persönlichen Beratungstermin bei Ihnen vor Ort oder in unserer Werkstatt.</p>
+      </div>
+      <div>
+        <form>
+          <div>
+            <label for="name">Ihr Name *</label>
+            <input type="text" id="name" name="name" placeholder="Max Mustermann" required>
+          </div>
+          <div>
+            <label for="email">E-Mail *</label>
+            <input type="email" id="email" name="email" placeholder="name@beispiel.de" required>
+          </div>
+          <div>
+            <label for="phone">Telefon</label>
+            <input type="tel" id="phone" name="phone" placeholder="+49 ...">
+          </div>
+          <div>
+            <label for="message">Ihr Anliegen *</label>
+            <textarea id="message" name="message" placeholder="Was dürfen wir für Sie anfertigen?" required></textarea>
+          </div>
+          <button type="submit" class="btn">Nachricht senden</button>
+          <p class="contact-subline">Mit dem Absenden Ihrer Anfrage erklären Sie sich damit einverstanden, dass wir Ihre Angaben zur Beantwortung verwenden. Weitere Informationen finden Sie in der Datenschutzerklärung.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-inner">
+      <div>© Schreinerei Gratzer GmbH, München</div>
+      <div class="footer-links">
+        <a href="#">Impressum</a>
+        <a href="#">Datenschutzerklärung</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Navigation
+    const navToggle = document.getElementById('navToggle');
+    const navList = document.getElementById('navList');
+
+    navToggle.addEventListener('click', () => {
+      navList.classList.toggle('open');
+    });
+
+    // Smooth Scroll für interne Links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const targetId = this.getAttribute('href').substring(1);
+        const target = document.getElementById(targetId);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+          navList.classList.remove('open');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
