@@ -922,7 +922,37 @@
     </div>
   </footer>
 
-  <script>// Mobile Navigation
+  <script>// 
+  </script>
+<!-- Chatbot Button -->
+<button id="chatbotOpen" class="chatbot-open">Chat starten</button>
+
+<!-- Chatbot Fenster -->
+<div id="chatbotWindow" class="chatbot-window" aria-hidden="true">
+  <div class="chatbot-header">
+    <strong>Schreinerei Gratzer</strong>
+    <button id="chatbotClose" class="chatbot-close">×</button>
+  </div>
+  <div id="chatbotBody" class="chatbot-body"></div>
+  <div class="chatbot-input-area">
+    <input id="chatbotInput" type="text" placeholder="Ihre Nachricht …">
+    <button id="chatbotSend">➤</button>
+  </div>
+<!-- Chatbot Button -->
+<button id="chatbotOpen" class="chatbot-open">Chat starten</button>
+
+<!-- Chatbot Fenster -->
+<div id="chatbotWindow" class="chatbot-window" aria-hidden="true">
+  <div class="chatbot-header">
+    <strong>Schreinerei Gratzer</strong>
+    <button id="chatbotClose" class="chatbot-close">×</button>
+  </div>
+  <div id="chatbotBody" class="chatbot-body"></div>
+  <div class="chatbot-input-area">
+    <input id="chatbotInput" type="text" placeholder="Ihre Nachricht …">
+    <button id="chatbotSend">➤</button>
+  </div>
+Mobile Navigation
 const navToggle = document.getElementById('navToggle');
 const navList = document.getElementById('navList');
 
@@ -1061,7 +1091,5 @@ chatbotOpen.addEventListener('click', () => {
 chatbotClose.addEventListener('click', () => {
   chatbotWindow.style.display = 'none';
   chatbotWindow.setAttribute('aria-hidden', 'true');
-});
-  </script>
-</body>
+});</body>
 </html>
