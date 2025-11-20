@@ -922,27 +922,146 @@
     </div>
   </footer>
 
-  <script>
-    // Mobile Navigation
-    const navToggle = document.getElementById('navToggle');
-    const navList = document.getElementById('navList');
+  <script>// Mobile Navigation
+const navToggle = document.getElementById('navToggle');
+const navList = document.getElementById('navList');
 
-    navToggle.addEventListener('click', () => {
-      navList.classList.toggle('open');
-    });
+navToggle.addEventListener('click', () => {
+  navList.classList.toggle('open');
+});
 
-    // Smooth Scroll für interne Links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        const targetId = this.getAttribute('href').substring(1);
-        const target = document.getElementById(targetId);
-        if (target) {
-          e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth' });
-          navList.classList.remove('open');
-        }
-      });
+// Smooth Scroll für interne Links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    const targetId = this.getAttribute('href').substring(1);
+    const target = document.getElementById(targetId);
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth' });
+      navList.classList.remove('open');
+    }
+  });
+});
+
+// CHATBOT-LOGIK
+const chatbotOpen = document.getElementById('chatbotOpen');
+const chatbotClose = document.getElementById('chatbotClose');
+const chatbotWindow = document.getElementById('chatbotWindow');
+const chatbotBody = document.getElementById('chatbotBody');
+const chatbotInput = document.getElementById('chatbotInput');
+const chatbotSend = document.getElementById('chatbotSend');
+
+const chatbotState = {
+  step: 0,
+  data: {
+    thema: null,
+    name: null,
+    ort: null,
+    telefon: null,
+    beschreibung: null
+  }
+};
+
+function addMessage(text, sender = 'bot') {
+  const div = document.createElement('div');
+  div.className = 'chatbot-message ' + sender;
+  div.textContent = text;
+  chatbotBody.appendChild(div);
+  chatbotBody.scrollTop = chatbotBody.scrollHeight;
+}
+
+function addOptions(options) {
+  const wrapper = document.createElement('div');
+  wrapper.className = 'chatbot-options';
+
+  options.forEach(opt => {
+    const btn = document.createElement('button');
+    btn.className = 'chatbot-option';
+    btn.textContent = opt.label;
+    btn.addEventListener('click', () => {
+      handleUserInput(opt.value, opt.label);
     });
+    wrapper.appendChild(btn);
+  });
+
+  chatbotBody.appendChild(wrapper);
+  chatbotBody.scrollTop = chatbotBody.scrollHeight;
+}
+
+function startChat() {
+  chatbotBody.innerHTML = '';
+  chatbotState.step = 0;
+  chatbotState.data = { thema: null, name: null, ort: null, telefon: null, beschreibung: null };
+  addMessage('Guten Tag! Wie kann die Schreinerei Gratzer Ihnen helfen?', 'bot');
+  addOptions([
+    { label: 'Neue Küche / Möbel', value: 'Küche / Möbel' },
+    { label: 'Treppenbau', value: 'Treppenbau' },
+    { label: 'Türen & Fenster', value: 'Türen & Fenster' },
+    { label: 'Außenbereich / Terrasse', value: 'Außenbereich / Terrasse' },
+    { label: 'Allgemeine Anfrage', value: 'Allgemeine Anfrage' }
+  ]);
+}
+
+function handleUserInput(rawValue, labelText) {
+  const text = labelText || rawValue;
+  addMessage(text, 'user');
+
+  if (chatbotState.step === 0) {
+    chatbotState.data.thema = rawValue;
+    chatbotState.step = 1;
+    addMessage('Alles klar. Wie dürfen wir Sie ansprechen?', 'bot');
+  } else if (chatbotState.step === 1) {
+    chatbotState.data.name = rawValue;
+    chatbotState.step = 2;
+    addMessage('Danke, ' + rawValue + '. In welchem Ort bzw. Stadtteil wohnen Sie?', 'bot');
+  } else if (chatbotState.step === 2) {
+    chatbotState.data.ort = rawValue;
+    chatbotState.step = 3;
+    addMessage('Bitte geben Sie eine Telefonnummer an, unter der wir Sie erreichen können.', 'bot');
+  } else if (chatbotState.step === 3) {
+    chatbotState.data.telefon = rawValue;
+    chatbotState.step = 4;
+    addMessage('Zum Schluss: Beschreiben Sie kurz Ihr Vorhaben (z. B. Raum, Maße, Material).', 'bot');
+  } else if (chatbotState.step === 4) {
+    chatbotState.data.beschreibung = rawValue;
+    chatbotState.step = 5;
+
+    const summary =
+      'Thema: ' + chatbotState.data.thema + '\n' +
+      'Name: ' + chatbotState.data.name + '\n' +
+      'Ort: ' + chatbotState.data.ort + '\n' +
+      'Telefon: ' + chatbotState.data.telefon + '\n' +
+      'Beschreibung: ' + chatbotState.data.beschreibung;
+
+    addMessage('Vielen Dank! Hier ist Ihre Zusammenfassung:\n\n' + summary, 'bot');
+    addMessage('Bitte senden Sie diese Angaben per E-Mail an info@schreinerei-gratzer.de oder rufen Sie uns direkt an.', 'bot');
+  }
+}
+
+chatbotSend.addEventListener('click', () => {
+  const value = chatbotInput.value.trim();
+  if (!value) return;
+  chatbotInput.value = '';
+  handleUserInput(value);
+});
+
+chatbotInput.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    chatbotSend.click();
+  }
+});
+
+chatbotOpen.addEventListener('click', () => {
+  chatbotWindow.style.display = 'flex';
+  chatbotWindow.setAttribute('aria-hidden', 'false');
+  startChat();
+});
+
+chatbotClose.addEventListener('click', () => {
+  chatbotWindow.style.display = 'none';
+  chatbotWindow.setAttribute('aria-hidden', 'true');
+});
   </script>
 </body>
 </html>
